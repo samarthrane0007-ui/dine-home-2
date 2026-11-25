@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dine-Home brings award-winning private chefs, bespoke tasting menus, and curated fine-dining experiences straight to your home across India." />
+  <meta name="keywords" content="Dine-Home, private chef India, luxury home dining, bespoke tasting menu, fine dining at home, culinary experiences" />
+  <meta name="author" content="Dine-Home Culinary Pvt. Ltd." />
+  <title>Dine-Home | Luxury Private Chef & Curated Home Dining</title>
+
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141413'/%3E%3Cpath d='M16 42h32v4H16zM32 18c-9.9 0-18 7.6-18 17h36c0-9.4-8.1-17-18-17zm0-4a3 3 0 100 6 3 3 0 000-6z' fill='%23C89B54'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Leaflet.js CSS for Interactive OpenStreetMap -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ================= HEADER & STICKY NAVIGATION ================= -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo" aria-label="Dine-Home Home">
+        <span class="logo-mark"><i class="fa-solid fa-utensils"></i></span>
+        <span class="logo-text">Dine-<span>Home</span></span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+
+          <!-- Dropdown Menu -->
+          <li class="nav-dropdown">
+            <button type="button" class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="experiencesDropdown">
+              Experiences <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </button>
+            <ul class="dropdown-menu" id="experiencesDropdown">
+              <li><a href="#services" class="dropdown-item" data-filter-jump="Private Chef"><i class="fa-solid fa-hat-chef"></i> Private Chefs</a></li>
+              <li><a href="#services" class="dropdown-item" data-filter-jump="Tasting Menu"><i class="fa-solid fa-plate-wheat"></i> Tasting Menus</a></li>
+              <li><a href="#services" class="dropdown-item" data-filter-jump="Events"><i class="fa-solid fa-champagne-glasses"></i> Soirées & Events</a></li>
+              <li><a href="#services" class="dropdown-item" data-filter-jump="Artisanal Box"><i class="fa-solid fa-gift"></i> Artisanal Boxes</a></li>
+              <li><a href="#featured" class="dropdown-item"><i class="fa-solid fa-star"></i> Signature Menus</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#locations" class="nav-link">Locations</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button type="button" class="btn btn-ghost" id="openAuthBtn">
+            <i class="fa-regular fa-user"></i> <span id="authBtnText">Sign In</span>
+          </button>
+          <button type="button" class="btn btn-primary" id="navBookBtn">Book a Chef</button>
+        </div>
+      </nav>
+
+      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Toggle Menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-text reveal">
+          <span class="eyebrow-badge"><i class="fa-solid fa-sparkles"></i> India's Premier Private Dining Collective</span>
+          <h1>Fine Dining, <em>Reimagined</em> at Your Table.</h1>
+          <p class="hero-subtitle">
+            Host effortless, restaurant-calibre evenings in the comfort of your home. Our vetted culinary masters handle everything—from bespoke menus and artisanal sourcing to live plating and spotless cleanup.
+          </p>
+          <div class="hero-ctas">
+            <a href="#services" class="btn btn-primary btn-lg">Explore Experiences <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#featured" class="btn btn-outline-light btn-lg">View Signature Menus</a>
+          </div>
+        </div>
+
+        <!-- Interactive Quick Booking / Availability Bar -->
+        <form class="hero-booking-bar reveal" id="heroSearchForm" aria-label="Quick Experience Finder">
+          <div class="booking-field">
+            <label for="heroCity"><i class="fa-solid fa-location-dot"></i> City</label>
+            <select id="heroCity" name="city">
+              <option value="All">All Cities</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Goa">Goa</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="New Delhi">New Delhi</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Pune">Pune</option>
+            </select>
+          </div>
+          <div class="booking-divider"></div>
+          <div class="booking-field">
+            <label for="heroCategory"><i class="fa-solid fa-bell-concierge"></i> Experience</label>
+            <select id="heroCategory" name="category">
+              <option value="All">All Experiences</option>
+              <option value="Private Chef">Private Chef</option>
+              <option value="Tasting Menu">Tasting Menu</option>
+              <option value="Events">Soirées & Events</option>
+              <option value="Artisanal Box">Artisanal Box</option>
+            </select>
+          </div>
+          <div class="booking-divider"></div>
+          <div class="booking-field">
+            <label for="heroGuests"><i class="fa-solid fa-users"></i> Guests</label>
+            <select id="heroGuests" name="guests">
+              <option value="2">2 Guests (Intimate)</option>
+              <option value="4">4 Guests</option>
+              <option value="6" selected>6 Guests</option>
+              <option value="10">10 Guests</option>
+              <option value="16">16+ Guests (Event)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary booking-submit">
+            <i class="fa-solid fa-magnifying-glass"></i> Find Experience
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= 2. ABOUT US SECTION ================= -->
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-visuals reveal">
+          <div class="about-img-main">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=80" alt="Dine-Home executive chef carefully plating a gourmet course" loading="lazy" />
+          </div>
+          <div class="about-img-accent">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80" alt="Warm candlelit fine dining table styled by Dine-Home" loading="lazy" />
+          </div>
+          <div class="about-floating-card">
+            <div class="floating-icon"><i class="fa-solid fa-award"></i></div>
+            <div>
+              <strong>Top 1% Vetted Chefs</strong>
+              <span>5-star hotel &amp; global kitchen alumni</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content reveal">
+          <span class="section-tag">Our Philosophy</span>
+          <h2>Hospitality Without the Hurry, Crafted Around Your Home.</h2>
+          <p>
+            Founded in 2021, <strong>Dine-Home</strong> was born from a simple belief: the most memorable meals happen around your own table, surrounded by the people you love—without spending hours prepping or cleaning.
+          </p>
+          <p>
+            We partner with India's finest independent chefs, sommeliers, and table stylists to transform living rooms, terraces, and villas into intimate culinary sanctuaries. Every ingredient is sourced fresh the morning of your dinner.
+          </p>
+
+          <div class="about-pillars">
+            <div class="pillar-item">
+              <i class="fa-solid fa-leaf"></i>
+              <div>
+                <h4>Hyper-Fresh Sourcing</h4>
+                <p>Farm-to-table produce, artisanal cheeses, and sustainably caught seafood.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <div>
+                <h4>End-to-End White Glove Service</h4>
+                <p>Menu customisation, tableware curation, live service, and complete kitchen cleanup.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn-dark">Speak With Our Concierge</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. SERVICES / EXPERIENCES SECTION ================= -->
+    <section class="section services-section bg-surface" id="services">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-tag">Curated Experiences</span>
+          <h2>Bespoke Culinary Services</h2>
+          <p>Filter by occasion, search by cuisine, or sort by budget to find the ideal dining format for your gathering.</p>
+        </div>
+
+        <!-- Search, Filter & Sort Controls -->
+        <div class="controls-bar reveal">
+          <div class="filter-pills" id="serviceFilters" role="tablist" aria-label="Filter experiences by category">
+            <button type="button" class="filter-pill active" data-category="All">All</button>
+            <button type="button" class="filter-pill" data-category="Private Chef">Private Chef</button>
+            <button type="button" class="filter-pill" data-category="Tasting Menu">Tasting Menu</button>
+            <button type="button" class="filter-pill" data-category="Events">Events</button>
+            <button type="button" class="filter-pill" data-category="Artisanal Box">Artisanal Box</button>
+          </div>
+
+          <div class="search-sort-group">
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="serviceSearch" placeholder="Search experiences..." aria-label="Search experiences" />
+            </div>
+            <select id="serviceSort" class="sort-select" aria-label="Sort experiences">
+              <option value="featured">Sort: Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating-desc">Highest Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dynamic Services Grid (Populated via data.json) -->
+        <div class="services-grid" id="servicesGrid" aria-live="polite">
+          <!-- JS injects service cards here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. FEATURED SIGNATURE MENUS ================= -->
+    <section class="section featured-section" id="featured">
+      <div class="container">
+        <div class="section-header-split reveal">
+          <div>
+            <span class="section-tag">Chef's Table</span>
+            <h2>Signature Tasting Menus</h2>
+          </div>
+          <p>Seasonal multi-course menus crafted by our headline chefs. Fully adaptable for vegetarian, vegan, Jain, and gluten-free preferences.</p>
+        </div>
+
+        <!-- Dynamic Featured Grid (Populated via data.json) -->
+        <div class="featured-grid" id="featuredGrid">
+          <!-- JS injects featured menu cards here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. STATISTICS / ACHIEVEMENTS ================= -->
+    <section class="stats-section" aria-label="Dine-Home Achievements">
+      <div class="container stats-grid">
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="14500" data-suffix="+">0</span>
+          <span class="stat-label">Private Dinners Hosted</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="120" data-suffix="+">0</span>
+          <span class="stat-label">Vetted Master Chefs</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="6" data-suffix="">0</span>
+          <span class="stat-label">Culinary Hubs in India</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="98" data-suffix="%">0</span>
+          <span class="stat-label">Repeat Host Satisfaction</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. INTERACTIVE MAP & LOCATION EXPLORER ================= -->
+    <section class="section locations-section bg-surface" id="locations">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-tag">Where We Serve</span>
+          <h2>Explore Our Culinary Hubs</h2>
+          <p>Select a city below or click a marker on the map to inspect local chef availability, lead times, and regional specialities.</p>
+        </div>
+
+        <div class="map-explorer-layout reveal">
+          <!-- Sidebar with Search & Location Cards -->
+          <div class="locations-sidebar">
+            <div class="search-input-wrap full-width">
+              <i class="fa-solid fa-location-crosshairs"></i>
+              <input type="text" id="locationSearch" placeholder="Filter by city or neighbourhood..." aria-label="Search locations" />
+            </div>
+            <div class="locations-list" id="locationsList">
+              <!-- JS injects location cards here -->
+            </div>
+          </div>
+
+          <!-- Interactive Leaflet Map -->
+          <div class="map-container-wrap">
+            <div id="dineHomeMap" role="region" aria-label="Interactive Map of Dine-Home Locations in India"></div>
+            <button type="button" class="map-reset-btn" id="resetMapBtn" title="Reset Map View">
+              <i class="fa-solid fa-compress"></i> Reset View
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. IMAGE GALLERY SECTION ================= -->
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-tag">Visual Journal</span>
+          <h2>Moments Around the Table</h2>
+          <p>A glimpse into our live plating, bespoke table styling, and intimate celebrations across India.</p>
+        </div>
+
+        <div class="filter-pills center-pills reveal" id="galleryFilters">
+          <button type="button" class="filter-pill active" data-gallery="All">All</button>
+          <button type="button" class="filter-pill" data-gallery="Plating">Plating</button>
+          <button type="button" class="filter-pill" data-gallery="Table Styling">Table Styling</button>
+          <button type="button" class="filter-pill" data-gallery="Chefs">Chefs in Action</button>
+        </div>
+
+        <!-- Dynamic Gallery Grid (Populated via data.json) -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- JS injects gallery items here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 8. TESTIMONIALS SECTION ================= -->
+    <section class="section testimonials-section bg-surface" id="testimonials">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-tag">Host Stories</span>
+          <h2>Loved by Discerning Hosts</h2>
+          <p>Verified reviews from families, founders, and hosts who celebrated with Dine-Home.</p>
+        </div>
+
+        <div class="testimonials-grid" id="testimonialsGrid">
+          <!-- JS injects testimonial cards here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 9. FAQ SECTION ================= -->
+    <section class="section faq-section" id="faq">
+      <div class="container faq-layout">
+        <div class="faq-intro reveal">
+          <span class="section-tag">Common Questions</span>
+          <h2>Everything You Need to Know</h2>
+          <p>Planning your first private chef evening? Here are answers to the questions our concierge hears most often.</p>
+          <a href="#contact" class="btn btn-outline-dark">Have Another Question?</a>
+        </div>
+
+        <div class="faq-accordion reveal" id="faqAccordion">
+          <!-- JS injects FAQ items here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 10. CONTACT SECTION ================= -->
+    <section class="section contact-section bg-surface" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <span class="section-tag">Concierge Desk</span>
+          <h2>Let's Plan Your Next Gathering</h2>
+          <p>Share your event date, preferred cuisine, or dietary requirements. Our culinary concierge responds within 2 hours.</p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <strong>Concierge Line</strong>
+                <span>+91 22 4890 7721 (9 AM – 10 PM IST)</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <strong>Email Us</strong>
+                <span>concierge@dine-home.in</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fa-solid fa-building"></i></div>
+              <div>
+                <strong>Flagship Studio</strong>
+                <span>14th Road, Bandra West, Mumbai 400050</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form card reveal" id="contactForm" novalidate>
+          <h3>Send an Enquiry</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactName">Full Name *</label>
+              <input type="text" id="contactName" name="name" placeholder="e.g., Ananya Sharma" required />
+              <small class="error-msg"></small>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address *</label>
+              <input type="email" id="contactEmail" name="email" placeholder="ananya@example.com" required />
+              <small class="error-msg"></small>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactPhone">Phone Number *</label>
+              <input type="tel" id="contactPhone" name="phone" placeholder="+91 98200 12345" required />
+              <small class="error-msg"></small>
+            </div>
+            <div class="form-group">
+              <label for="contactCity">City *</label>
+              <select id="contactCity" name="city" required>
+                <option value="">Select your city</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Goa">Goa</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="New Delhi">New Delhi</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Pune">Pune</option>
+              </select>
+              <small class="error-msg"></small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Tell Us About Your Occasion *</label>
+            <textarea id="contactMessage" name="message" rows="4" placeholder="Guest count, preferred date, cuisine preferences, or allergies..." required></textarea>
+            <small class="error-msg"></small>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Send Enquiry <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= 11. NEWSLETTER SUBSCRIPTION ================= -->
+    <section class="newsletter-section">
+      <div class="container newsletter-box reveal">
+        <div class="newsletter-copy">
+          <span class="section-tag light">The Seasonal Table</span>
+          <h2>Get Early Access to Chef Pop-Ups &amp; Seasonal Menus</h2>
+          <p>Join 18,000+ hosts receiving monthly culinary inspiration, pairing notes, and priority weekend slots.</p>
+        </div>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <div class="newsletter-input-group">
+            <input type="email" id="newsletterEmail" placeholder="Enter your email address" aria-label="Email address for newsletter" required />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+          <small class="newsletter-error" id="newsletterError"></small>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= 12. PROFESSIONAL FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand-logo footer-logo">
+          <span class="logo-mark"><i class="fa-solid fa-utensils"></i></span>
+          <span class="logo-text">Dine-<span>Home</span></span>
+        </a>
+        <p>Elevating intimate gatherings across India with vetted private chefs, bespoke tasting menus, and seamless home hospitality.</p>
+        <div class="social-links">
+          <a href="#home" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#home" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#home" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#home" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Experiences</h4>
+        <ul>
+          <li><a href="#services" data-filter-jump="Private Chef">Private Chef Dinners</a></li>
+          <li><a href="#services" data-filter-jump="Tasting Menu">Multi-Course Tastings</a></li>
+          <li><a href="#services" data-filter-jump="Events">Villa &amp; Terrace Soirées</a></li>
+          <li><a href="#services" data-filter-jump="Artisanal Box">Artisanal Grazing Boxes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Dine-Home</a></li>
+          <li><a href="#locations">Cities We Serve</a></li>
+          <li><a href="#gallery">Visual Journal</a></li>
+          <li><a href="#faq">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support &amp; Trust</h4>
+        <ul>
+          <li><a href="#contact">Concierge Support</a></li>
+          <li><a href="#faq">Hygiene &amp; FSSAI Standards</a></li>
+          <li><a href="#faq">Cancellation Policy</a></li>
+          <li><a href="#contact">Partner as a Chef</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; <span id="currentYear"></span> Dine-Home Culinary Pvt. Ltd. All rights reserved.</p>
+      <p class="footer-meta">Crafted for discerning tables across India.</p>
+    </div>
+  </footer>
+
+  <!-- ================= BACK TO TOP BUTTON ================= -->
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ================= BOOKING MODAL ================= -->
+  <div class="modal-backdrop" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle" hidden>
+    <div class="modal-card">
+      <button type="button" class="modal-close" data-close-modal="bookingModal" aria-label="Close booking modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <span class="section-tag">Instant Reservation Request</span>
+      <h3 id="bookingModalTitle">Reserve Your Dine-Home Experience</h3>
+      <p class="modal-subtitle" id="bookingItemSummary">Select your preferred date and guest count to calculate your estimate.</p>
+
+      <form id="bookingForm" novalidate>
+        <div class="form-group">
+          <label for="bookExperience">Selected Experience</label>
+          <select id="bookExperience" required></select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookCity">City *</label>
+            <select id="bookCity" required>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Goa">Goa</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="New Delhi">New Delhi</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Pune">Pune</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bookDate">Event Date *</label>
+            <input type="date" id="bookDate" required />
+            <small class="error-msg"></small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookGuests">Number of Guests *</label>
+            <input type="number" id="bookGuests" min="2" max="40" value="6" required />
+            <small class="error-msg"></small>
+          </div>
+          <div class="form-group">
+            <label for="bookPhone">Contact Number *</label>
+            <input type="tel" id="bookPhone" placeholder="+91 98200 12345" required />
+            <small class="error-msg"></small>
+          </div>
+        </div>
+
+        <div class="booking-estimate-box">
+          <span>Estimated Total (incl. sourcing &amp; service)</span>
+          <strong id="bookingEstimate">₹0</strong>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Confirm Reservation Request</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= AUTH (LOGIN / SIGN UP) MODAL ================= -->
+  <div class="modal-backdrop" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle" hidden>
+    <div class="modal-card modal-sm">
+      <button type="button" class="modal-close" data-close-modal="authModal" aria-label="Close authentication modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="auth-tabs" role="tablist">
+        <button type="button" class="auth-tab active" data-auth-tab="login">Sign In</button>
+        <button type="button" class="auth-tab" data-auth-tab="signup">Create Account</button>
+      </div>
+
+      <h3 id="authModalTitle">Welcome Back</h3>
+      <p class="modal-subtitle" id="authModalSubtitle">Access your saved menus, dietary profiles, and past bookings.</p>
+
+      <form id="authForm" novalidate>
+        <div class="form-group" id="authNameGroup" hidden>
+          <label for="authName">Full Name *</label>
+          <input type="text" id="authName" placeholder="e.g., Rohan Mehta" />
+          <small class="error-msg"></small>
+        </div>
+        <div class="form-group">
+          <label for="authEmail">Email Address *</label>
+          <input type="email" id="authEmail" placeholder="you@example.com" required />
+          <small class="error-msg"></small>
+        </div>
+        <div class="form-group">
+          <label for="authPassword">Password *</label>
+          <input type="password" id="authPassword" placeholder="Minimum 6 characters" required />
+          <small class="error-msg"></small>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="authSubmitBtn">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= GALLERY LIGHTBOX MODAL ================= -->
+  <div class="modal-backdrop lightbox-backdrop" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image Lightbox" hidden>
+    <button type="button" class="lightbox-close" data-close-modal="lightboxModal" aria-label="Close lightbox">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <button type="button" class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="" alt="" />
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button type="button" class="lightbox-nav next" id="lightboxNext" aria-label="Next image">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Leaflet.js Script -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <!-- Main JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

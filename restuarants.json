@@ -1,0 +1,172 @@
+{
+  "promoCodes": {
+    "DINE20": { "type": "percent", "value": 20, "maxDiscount": 150, "minOrder": 299 },
+    "WELCOME50": { "type": "flat", "value": 50, "minOrder": 199 }
+  },
+  "restaurants": [
+    {
+      "id": "rest-peppers",
+      "name": "Peppers Gourmet Cuisine",
+      "area": "Margao, South Goa",
+      "cuisine": "Goan • Seafood • North Indian",
+      "rating": 4.8,
+      "lat": 15.2736,
+      "lng": 73.9581,
+      "dishes": [
+        {
+          "id": "p-1",
+          "name": "Goan Fish Curry Thali",
+          "price": 260,
+          "rating": 4.9,
+          "isVeg": false,
+          "bestseller": true,
+          "description": "Ukde rice, kingfish rava fry, tangy coconut curry, kismur, tisryo sukhem, and sol kadi.",
+          "image": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "id": "p-2",
+          "name": "Chicken Xacuti & Poi",
+          "price": 310,
+          "rating": 4.8,
+          "isVeg": false,
+          "bestseller": true,
+          "description": "Slow-cooked chicken in roasted coconut and poppy seed gravy served with two warm pois.",
+          "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "id": "p-3",
+          "name": "Paneer Butter Masala",
+          "price": 250,
+          "rating": 4.6,
+          "isVeg": true,
+          "bestseller": false,
+          "description": "Char-grilled cottage cheese simmered in creamy tomato-cashew makhani gravy.",
+          "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80"
+        }
+      ]
+    },
+    {
+      "id": "rest-funfrolic",
+      "name": "Fun & Frolic Family Restaurant",
+      "area": "Cuncolim, South Goa",
+      "cuisine": "Goan • Tandoor • Grills",
+      "rating": 4.7,
+      "lat": 15.1773,
+      "lng": 73.9939,
+      "dishes": [
+        {
+          "id": "ff-1",
+          "name": "Chicken Cafreal",
+          "price": 280,
+          "rating": 4.9,
+          "isVeg": false,
+          "bestseller": true,
+          "description": "Pan-seared chicken marinated in fresh coriander, green chillies, and toddy vinegar.",
+          "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "id": "ff-2",
+          "name": "Prawn Balchão Rice Bowl",
+          "price": 340,
+          "rating": 4.7,
+          "isVeg": false,
+          "bestseller": false,
+          "description": "Fiery pickled prawn masala paired with steamed basmati rice and roasted papad.",
+          "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "id": "ff-3",
+          "name": "Crispy Mushroom Xacuti Bites",
+          "price": 210,
+          "rating": 4.5,
+          "isVeg": true,
+          "bestseller": false,
+          "description": "Button mushrooms tossed in spiced Goan masala glaze with curry leaves.",
+          "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80"
+        }
+      ]
+    },
+    {
+      "id": "rest-gaylin",
+      "name": "Gaylin Chinese Restaurant",
+      "area": "Varde Valaulikar Rd, Margao",
+      "cuisine": "Chinese • Asian Bowls",
+      "rating": 4.6,
+      "lat": 15.2709,
+      "lng": 73.9598,
+      "dishes": [
+        {
+          "id": "g-1",
+          "name": "Burnt Garlic Chicken Fried Rice",
+          "price": 240,
+          "rating": 4.8,
+          "isVeg": false,
+          "bestseller": true,
+          "description": "Wok-tossed jasmine rice with crispy golden garlic, shredded chicken, and spring onions.",
+          "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "id": "g-2",
+          "name": "Veg Hakka Noodles",
+          "price": 195,
+          "rating": 4.5,
+          "isVeg": true,
+          "bestseller": false,
+          "description": "Classic street-style stir-fried noodles with crunchy bell peppers, cabbage, and soy glaze.",
+          "image": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "id": "g-3",
+          "name": "Chilli Paneer Dry",
+          "price": 230,
+          "rating": 4.7,
+          "isVeg": true,
+          "bestseller": true,
+          "description": "Crisp batter-fried paneer tossed in spicy dark soy, ginger, and green chilli sauce.",
+          "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80"
+        }
+      ]
+    },
+    {
+      "id": "rest-goankitchen",
+      "name": "The Goan Kitchen & Desserts",
+      "area": "Pajifond, Margao",
+      "cuisine": "Traditional Goan • Desserts • Beverages",
+      "rating": 4.9,
+      "lat": 15.2682,
+      "lng": 73.9545,
+      "dishes": [
+        {
+          "id": "gk-1",
+          "name": "Classic Goan Bebinca",
+          "price": 160,
+          "rating": 4.9,
+          "isVeg": true,
+          "bestseller": true,
+          "description": "Seven-layer coconut milk and caramelised jaggery pudding served warm with vanilla ice cream.",
+          "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "id": "gk-2",
+          "name": "Chilled Kokum Sol Kadi",
+          "price": 85,
+          "rating": 4.8,
+          "isVeg": true,
+          "bestseller": false,
+          "description": "Refreshing pink digestive cooler made from kokum extract, fresh coconut milk, and garlic.",
+          "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "id": "gk-3",
+          "name": "Serradura (Sawdust Pudding)",
+          "price": 150,
+          "rating": 4.8,
+          "isVeg": true,
+          "bestseller": true,
+          "description": "Portuguese-Goan chilled layered dessert of whipped sweet cream and crushed Marie biscuits.",
+          "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80"
+        }
+      ]
+    }
+  ]
+}
